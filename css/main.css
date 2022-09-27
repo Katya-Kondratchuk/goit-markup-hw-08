@@ -32,6 +32,7 @@ body {
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -378,6 +379,34 @@ input {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.filter__btn:after {
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #2196f3;
+  border-radius: 5px;
+  background-image: url("../../images/plane.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  content: "";
+  -webkit-transform-origin: left bottom;
+          transform-origin: left bottom;
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+}
+.filter__btn:hover, .filter__btn:focus {
+  -webkit-transform-origin: center bottom;
+          transform-origin: center bottom;
+  -webkit-transform: rotateX(-90deg) translateY(100%);
+          transform: rotateX(-90deg) translateY(100%);
 }
 .filter__btn:hover, .filter__btn:focus {
   background-color: #2196f3;
@@ -475,6 +504,22 @@ input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.button-scroll {
+  background-color: aqua;
+  width: 20px;
+  height: 20px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  opacity: 0;
+  -webkit-transition: opacity 400ms linear;
+  transition: opacity 400ms linear;
+}
+
+.btn-style {
+  opacity: 1;
 }
 
 /* Логотип */
@@ -600,6 +645,51 @@ input {
   border-radius: 4px;
   padding: 10px 24px;
   min-width: 216px;
+  background: -webkit-gradient(linear, left top, right top, from(#03a9f4), color-stop(#4441f4), color-stop(#3bb1ff), to(#054f71));
+  background: linear-gradient(90deg, #03a9f4, #4441f4, #3bb1ff, #054f71);
+  position: relative;
+}
+.hero__btn:hover {
+  -webkit-animation: animate 8s linear infinite;
+          animation: animate 8s linear infinite;
+}
+.hero__btn:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  background: -webkit-gradient(linear, left top, right top, from(#03a9f4), color-stop(#4441f4), color-stop(#3bb1ff), to(#054f71));
+  background: linear-gradient(90deg, #03a9f4, #4441f4, #3bb1ff, #054f71);
+  background-size: 400%;
+  border-radius: 40px;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.hero__btn:hover:before {
+  -webkit-filter: blur(20px);
+          filter: blur(20px);
+  opacity: 1;
+  -webkit-animation: animate 8s linear infinite;
+          animation: animate 8s linear infinite;
+}
+@-webkit-keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
 }
 @media screen and (min-width: 1200px) {
   .hero__btn {
@@ -852,8 +942,6 @@ input {
   position: absolute;
   top: 10px;
   right: 15px;
-  -webkit-transform: translateY(-60px);
-          transform: translateY(-60px);
   z-index: 9999;
   -webkit-transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 450ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 450ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -867,6 +955,42 @@ input {
   outline: none;
 }
 
+.modal-menu .modal-menu__btn {
+  -webkit-animation-name: move;
+          animation-name: move;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes move {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-60px);
+            transform: translateY(-60px);
+  }
+}
+
+@keyframes move {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-60px);
+            transform: translateY(-60px);
+  }
+}
 .menu {
   padding: 48px 40px;
   display: -webkit-box;

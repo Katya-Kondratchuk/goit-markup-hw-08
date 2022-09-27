@@ -75,7 +75,39 @@
     border-radius: 4px;
     padding: 10px 24px;
     min-width: 216px;
+    background: linear-gradient(90deg, #03a9f4, #4441f4, #3bb1ff, #054f71);
+    position: relative;
+    &:hover {
+      animation: animate 8s linear infinite;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      bottom: -5px;
+      left: -5px;
+      background: linear-gradient(90deg, #03a9f4, #4441f4, #3bb1ff, #054f71);
+      background-size: 400%;
+      border-radius: 40px;
+      opacity: 0;
+      transition: 0.5s;
+    }
 
+    &:hover:before {
+      filter: blur(20px);
+      opacity: 1;
+      animation: animate 8s linear infinite;
+    }
+
+    @keyframes animate {
+      0% {
+        background-position: 0%;
+      }
+      100% {
+        background-position: 400%;
+      }
+    }
     @media screen and(min-width:768px) {
     }
 

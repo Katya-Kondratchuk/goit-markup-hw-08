@@ -9,6 +9,7 @@ body {
   font-size: 14px;
   line-height: 1.14;
   padding-top: 60px;
+
   @media screen and(min-width:768px) {
     padding-top: 80px;
   }
@@ -16,6 +17,7 @@ body {
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *,
